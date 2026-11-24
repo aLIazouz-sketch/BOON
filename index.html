@@ -9,7 +9,7 @@
 <meta property="og:image" content="b101-1.jpg">
 <link rel="icon" href="favicon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 /* VOICE: calm, airy, confident — a family developer's brochure with room to breathe.
    IDEA: a printed sales brochure in the brand's own terracotta: white paper, one orange field per spread.
@@ -20,7 +20,7 @@
 :root[data-theme=light],:root[data-theme=dark]{color-scheme:light}
 *{box-sizing:border-box;min-width:0}
 html{scroll-behavior:smooth;scroll-padding-top:80px}
-body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 'IBM Plex Sans Arabic',system-ui,sans-serif;overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.75 'Alexandria',system-ui,sans-serif;overflow-x:clip}
 img{display:block;max-width:100%}
 a{color:inherit}
 h1,h2,h3{margin:0;line-height:1.2;text-wrap:balance;font-weight:700}
@@ -265,6 +265,39 @@ footer{background:#3A2219;padding:56px max(5vw,20px) 28px;font-size:15px;color:#
 .pillars .pl span{display:block;font-size:15px;line-height:1.7;color:#DCCFC6!important}
 @media(max-width:760px){.pillars.swipe>*{flex-basis:78%}}
 @media(prefers-reduced-motion:reduce){.pl img{transition:none}}
+
+/* ===== hero slideshow + Alexandria + charcoal text ===== */
+:root{--ink:#2F3236;--mut:#6E7378;--line:#E6E1DC;--bg:#FCFAF8;--soft:#F4F1EE;--soft2:#E7E2DD}
+body{font-family:'Alexandria',system-ui,sans-serif;font-weight:400;color:var(--ink)}
+h1,h2,h3{font-weight:500;color:var(--ink)}
+.kicker,.soft .kicker,.sand .kicker{color:var(--mut);font-weight:500}
+.more{color:var(--ink)}
+.hero{min-height:min(92svh,820px);background:#2F3236}
+.slides{position:absolute;inset:0;overflow:hidden}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transform:scale(1.08);transition:opacity 1.6s ease,transform 7s linear}
+.slide.on{opacity:1;transform:scale(1)}
+.hero::after{z-index:1;background:linear-gradient(to top,rgba(24,26,29,.82) 0%,rgba(24,26,29,.35) 50%,rgba(24,26,29,.15) 100%)}
+.hero h1{color:#fff;font-weight:500;letter-spacing:0}
+.hero p{color:#ECECEC}
+.hero .eyebrow{color:#fff;opacity:.85}
+.cap{top:auto;bottom:56px;inset-inline-end:auto;inset-inline-start:max(5vw,20px);color:#fff;opacity:.85;font-size:13px}
+.sdots{position:absolute;z-index:3;bottom:40px;inset-inline-start:max(5vw,20px);display:flex;gap:6px}
+.sdots i{width:22px;height:2px;background:rgba(255,255,255,.4);transition:background .4s,width .4s}
+.sdots i.on{background:#fff;width:40px}
+.cue{display:none}
+@media(max-width:600px){.cap{display:none}.sdots{bottom:24px}}
+@media(prefers-reduced-motion:reduce){.slide{transition:none;transform:none}}
+
+/* ===== stat cards: rounded, detached from hero ===== */
+.statsband{padding:clamp(28px,4vw,48px) max(5vw,20px) 0;background:var(--bg)}
+.statgrid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:clamp(10px,2vw,24px)}
+.stat{background:#fff;border:1px solid var(--line);border-radius:22px;padding:clamp(16px,2.4vw,28px) 12px;display:flex;flex-direction:column;align-items:center;text-align:center;gap:6px;box-shadow:0 10px 30px rgba(47,50,54,.06);transition:transform .3s,box-shadow .3s}
+.stat:hover{transform:translateY(-3px);box-shadow:0 16px 40px rgba(163,89,64,.14)}
+.si{width:clamp(40px,5vw,52px);height:clamp(40px,5vw,52px);border-radius:16px;background:#F6E9E2;display:flex;align-items:center;justify-content:center;margin-bottom:4px}
+.si svg{width:55%;height:55%;fill:none;stroke:#A35940;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.stat b{font-size:clamp(24px,3.6vw,40px);font-weight:600;color:var(--ink);line-height:1.15}
+.stat span{font-size:clamp(12px,1.4vw,15px);color:var(--mut);line-height:1.4}
+#projects{padding-top:clamp(48px,7vw,96px)}
 </style>
 </head>
 <body>
@@ -281,10 +314,10 @@ footer{background:#3A2219;padding:56px max(5vw,20px) 28px;font-size:15px;color:#
 
 <main id="home">
   <section class="hero" id="top">
-    <img class="poster" src="b101-1.jpg" alt="">
-    <video id="vid" autoplay muted loop playsinline poster="b101-1.jpg" aria-hidden="true"><source src="hero.mp4" type="video/mp4"></video>
-    <button class="pause" id="pause" aria-label="إيقاف المقطع">❚❚</button>
-    <span class="cue" aria-hidden="true"></span><span class="cap">لقطات من مشروع دانة الياسمين B-101</span>
+    <div class="slides" aria-hidden="true"><div class="slide on" style="background-image:url(b101-1.jpg)"></div><div class="slide" style="background-image:url(b102-1.jpg)"></div><div class="slide" style="background-image:url(b103-1.jpg)"></div><div class="slide" style="background-image:url(b103-2.jpg)"></div></div>
+    <span class="cue" aria-hidden="true"></span>
+    <div class="sdots" id="sdots" aria-hidden="true"></div>
+    <span class="cap" id="scap">B-101 · دانة الياسمين</span>
     <div class="in">
       <span class="eyebrow">البون العقارية — الرياض</span>
       <h1>نطوّر بإتقان، ونبني بثقة.</h1>
@@ -293,11 +326,11 @@ footer{background:#3A2219;padding:56px max(5vw,20px) 28px;font-size:15px;color:#
     </div>
   </section>
 
-  <div class="stats" aria-label="أرقامنا">
-    <div><b>3</b><span>مشاريع في الرياض</span></div>
-    <div><b>+17</b><span>وحدة سكنية</span></div>
-        <div><b>2024</b><span>سنة التأسيس</span></div>
-  </div>
+  <section class="statsband" aria-label="أرقامنا"><div class="statgrid">
+    <div class="stat"><span class="si"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 21h18M5 21V8l7-5 7 5v13"/><path d="M9 21v-6h6v6"/></svg></span><b>3</b><span>مشاريع في الرياض</span></div>
+    <div class="stat"><span class="si"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2"/></svg></span><b>+17</b><span>وحدة سكنية</span></div>
+    <div class="stat"><span class="si"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span><b>2024</b><span>سنة التأسيس</span></div>
+  </div></section>
 
   <section class="band" id="projects">
     <div class="wrap">
@@ -434,12 +467,11 @@ function mapHTML(sel){const list=PLACES.filter(p=>p.k==sel||p.k=='hq');return `<
  +RD.map(r=>`<span class="rd${r[4]?' s':''}" style="left:${r[0]}%;top:${r[1]}%;transform:translate(-50%,-50%) rotate(${r[3]}deg)">${r[2]}</span>`).join('')
  +list.map(p=>`<a class="pin${p.k==sel?' on':''}" href="${p.url}" target="_blank" rel="noopener" data-k="${p.k}" style="left:${p.pos[0]}%;top:${p.pos[1]}%;z-index:${p.k==sel?3:2}" aria-label="${p.title}"><span>${p.label}</span><svg viewBox="0 0 24 30"><path d="M12 29s10-10 10-17A10 10 0 0 0 2 12c0 7 10 17 10 17z" fill="${p.c}" stroke="#fff" stroke-width="2"/><circle cx="12" cy="12" r="3.5" fill="#fff"/></svg></a>`).join('');}
 
-/* video */
-const v=$('vid'),pb=$('pause');
-v.addEventListener('playing',()=>{pb.style.display='block'});
-pb.onclick=()=>{if(v.paused){v.play();pb.textContent='❚❚';pb.setAttribute('aria-label','إيقاف المقطع')}else{v.pause();pb.textContent='►';pb.setAttribute('aria-label','تشغيل المقطع')}};
-if(matchMedia('(prefers-reduced-motion:reduce)').matches)v.removeAttribute('autoplay'),v.pause();
-
+/* hero slideshow */
+{const sl=[...document.querySelectorAll('.slide')],cap=$('scap'),sd=$('sdots'),L=["B-101 · دانة الياسمين", "B-102 · الرحمانية", "B-103 · العارض", "B-103 · العارض"];let i=0;
+ sd.innerHTML=sl.map((_,j)=>'<i'+(j?'':' class="on"')+'></i>').join('');
+ const go=n=>{sl[i].classList.remove('on');sd.children[i].classList.remove('on');i=n;sl[i].classList.add('on');sd.children[i].classList.add('on');cap.textContent=L[i]};
+ if(!matchMedia('(prefers-reduced-motion:reduce)').matches)setInterval(()=>go((i+1)%sl.length),5500);}
 /* menu */
 const nav=$('nav'),bg=$('burger');
 bg.onclick=()=>{const o=nav.classList.toggle('open');bg.setAttribute('aria-expanded',o)};
